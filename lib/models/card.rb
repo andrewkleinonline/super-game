@@ -19,4 +19,8 @@ class Card
     @attributes = @@library[card_number]
   end
 
+  def self.library
+    @@library
+  end
+
 end

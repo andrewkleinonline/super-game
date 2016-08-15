@@ -33,8 +33,12 @@ class CLI
 
 
       if selected_card.attributes[:name] == "Swindler"
-        #Swindler.steal
+        if player.name=="CPU"
+          Swindler.swindle_from_human(@cpu, @human)
+        else
+          Swindler.swindle_from_cpu(@cpu, @human)
         #choose card, get it if opponent has it
+        end
       end
       damage_cpu(selected_card.attributes[:power])
       player.discard_card(selected_card.attributes[:name])
@@ -48,8 +52,6 @@ class CLI
       process_move(request_move, player)
     end
   end
-
-  #def swindler_choice
 
   def cleanup
     if @cpu.health < 0

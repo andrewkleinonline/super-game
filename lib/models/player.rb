@@ -14,7 +14,11 @@ class Player
   end
 
   def draw_card
-    self.add_card(Card.new(rand(4)+1))
+    new_card = Card.new(rand(4)+1)
+    self.add_card(new_card)
+    if self.name != "CPU"
+      puts "You drew a #{new_card.attributes[:name]}!"
+    end
   end
 
   def discard_card(card_name)
@@ -29,7 +33,9 @@ class Player
   end
 
   def display_hand
+    #binding.pry
     @hand.each_with_index do |card,index|
+      #binding.pry
       puts "#{index+1}: #{card.attributes[:name]} (#{card.attributes[:power]})"
     end
   end
